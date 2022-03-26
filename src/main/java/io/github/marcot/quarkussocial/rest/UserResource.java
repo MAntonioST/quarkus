@@ -3,6 +3,7 @@ package io.github.marcot.quarkussocial.rest;
 import io.github.marcot.quarkussocial.domain.entity.User;
 import io.github.marcot.quarkussocial.domain.repository.UserRepository;
 import io.github.marcot.quarkussocial.rest.dto.CreateUserRequest;
+import io.github.marcot.quarkussocial.rest.dto.ResponseError;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -33,7 +34,9 @@ public class UserResource {
 
         Set<ConstraintViolation<CreateUserRequest>> violations = validator.validate(userRequest);
         if(!violations.isEmpty()){
-
+            return  ResponseError
+                    .createFromValidation(violations)
+                    .withStatusCode(ResponseError.UNPROCESSABLE_ENTITY_STATUS);
         }
 
         User user = new User();
