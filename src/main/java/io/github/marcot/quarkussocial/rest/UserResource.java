@@ -1,6 +1,6 @@
 package io.github.marcot.quarkussocial.rest;
 
-import io.github.marcot.quarkussocial.domain.entity.User;
+import io.github.marcot.quarkussocial.domain.model.User;
 import io.github.marcot.quarkussocial.domain.repository.UserRepository;
 import io.github.marcot.quarkussocial.rest.dto.CreateUserRequest;
 import io.github.marcot.quarkussocial.rest.dto.ResponseError;
