@@ -34,7 +34,7 @@ public class UserResource {
 
         Set<ConstraintViolation<CreateUserRequest>> violations = validator.validate(userRequest);
         if(!violations.isEmpty()){
-            return  ResponseError
+            return ResponseError
                     .createFromValidation(violations)
                     .withStatusCode(ResponseError.UNPROCESSABLE_ENTITY_STATUS);
         }
@@ -85,4 +85,5 @@ public class UserResource {
 
         return Response.status(Response.Status.NOT_FOUND).build();
     }
+
 }
